@@ -9,13 +9,13 @@ class Program
         Console.WriteLine("Please enter your name:");
         string userName = Console.ReadLine();
         DateTime date = DateTime.Now;
-        int gamesPlayed = 0;
+       /* int gamesPlayed = 0;
         char userOption;
         decimal averageScore;
-        bool isScoreEmpty = true;
+       */ bool isScoreEmpty = true;
         List<string> gamesHistory = new();
 
-        Console.WriteLine($"Welcome to the math game,{userName}.\n" + "Press any key to continue.");
+        Console.WriteLine($"Welcome to the math game, {userName}.\n" + "Press any key to continue.");
         Console.ReadKey();
         Console.Clear();
 
@@ -66,7 +66,7 @@ class Program
             int num1;
             int num2;
 
-            Console.WriteLine($"How many time would you like to play?");
+            Console.WriteLine($"How many times would you like to play?");
             var numberOfRounds = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < numberOfRounds; i++)
@@ -74,8 +74,9 @@ class Program
                 num1 = random.Next(1, 9);
                 num2 = random.Next(1, 9);
                 bool correct = false;
+                int attempts = 0;
 
-                while (!correct)
+                while (!correct && attempts < 1)
                 {
                     Console.WriteLine($"{num1} + {num2}");
                     var result = Console.ReadLine();
@@ -88,8 +89,13 @@ class Program
                     }
                     else
                     {
-                        Console.WriteLine("Try again!");
+                        Console.WriteLine("Sorry that wasn't right!");
+                        attempts++;
                     }
+                }
+                if (!correct)
+                {
+                    Console.WriteLine($"The correct answer is {num1 + num2}");
                 }
             }
 
@@ -105,8 +111,10 @@ class Program
             Console.Clear();
             var random = new Random();
             var score = 0;
+            Console.WriteLine($"How many times would you like to play?");
+            var numberOfRounds = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < numberOfRounds; i++)
             {
                 int num1 = random.Next(1, 9);
                 int num2 = random.Next(1, 9);
@@ -139,7 +147,10 @@ class Program
             var random = new Random();
             var score = 0;
 
-            for (int i = 0; i < 5; i++)
+            Console.WriteLine($"How many times would you like to play?");
+            var numberOfRounds = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < numberOfRounds; i++)
             {
                 int num1 = random.Next(1, 9);
                 int num2 = random.Next(1, 9);
@@ -171,8 +182,10 @@ class Program
             Console.Clear();
             var random = new Random();
             var score = 0;
+            Console.WriteLine($"How many times would you like to play?");
+            var numberOfRounds = int.Parse(Console.ReadLine());
 
-            for (int i=0; i < 5; i++)
+            for (int i=0; i < numberOfRounds; i++)
             {                
                     var divisionNumbers = GetDivisionNumbers();
 
@@ -204,6 +217,7 @@ class Program
             var random = new Random();
             var num1 = random.Next(1, 99);
             var num2 = random.Next(1, 99);
+            
 
             var result = new int[2];
 
